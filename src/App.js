@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+// import "./login/Form.css";
+import "./index.css";
+// import './App.css'
+import groupo from "./login/groupo.png";
+import { IconContext } from "react-icons";
+import { Header } from "./components/logo/Header";
+
+import Form from "./login/Form";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="container">
+        <Header />
+      </div>
+      <div className="main">
+        <div className="image">
+          <img src={groupo} alt="" />
+        </div>
+        <IconContext.Provider value={{ color: "white", size: "1.1em" }}>
+          <React.Fragment>
+            <Form />
+          </React.Fragment>
+        </IconContext.Provider>
+      </div>
+    </>
   );
 }
-
 export default App;
