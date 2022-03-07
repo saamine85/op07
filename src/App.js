@@ -16,7 +16,7 @@ function App() {
       </div>
       <div className="main">
         <div className="image">
-          <img src={groupo} alt="" />
+          <img src={groupo} alt="logo" />
         </div>
         <IconContext.Provider value={{ color: "white", size: "1.1em" }}>
           <React.Fragment>

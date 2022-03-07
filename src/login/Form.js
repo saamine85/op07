@@ -31,7 +31,7 @@ const Form = () => {
           Se connecter
         </button>
         <button onClick={registerClicked} id="registerBtn">
-          S’enregistrer
+          S’inscrire
         </button>
       </div>
       <div className="form-group">
@@ -42,7 +42,6 @@ const Form = () => {
           <RegisterForm />
         </animated.form>
       </div>
-      {/* <button className="sign-in">se connecter</button> */}
     </div>
   );
 };

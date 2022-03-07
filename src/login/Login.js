@@ -3,10 +3,10 @@ import { BsEnvelope } from "react-icons/bs";
 import { BiLock } from "react-icons/bi";
 import { HiEyeOff } from "react-icons/hi";
 
-const LoginForm = () => {
+const Login = () => {
   return (
     <form className="login-form">
-      <div className="form">
+      <div className="fieldInput">
         <label htmlFor="email">Email</label>
         <div className="email">
           <span>
@@ -15,7 +15,7 @@ const LoginForm = () => {
           <input type="email" placeholder="Entrer votre adress mail" />
         </div>
       </div>
-      <div className="form">
+      <div className="fieldInput">
         <label htmlFor="password">Mot de passe</label>
         <div className="password">
           <span>
@@ -31,4 +31,4 @@ const LoginForm = () => {
     </form>
   );
 };
-export default LoginForm;
+export default Login;
