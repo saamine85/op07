@@ -43,7 +43,7 @@ const Register = () => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       console.log(formErrors);
     }
-  }, [formErrors]);
+  }, [formErrors,isSubmit,formValues]);
 
   // validation form that take values as a parameter
   const validate = (values) => {
@@ -113,7 +113,7 @@ const Register = () => {
               onChange={handleChange}
             />
           </div>
-          <span className="errors">ajouter un mail valid </span>
+          <span className="errors">{formErrors.email} </span>
         </div>
         <div className="fieldInput">
           <label htmlFor="text">Département</label>
@@ -129,7 +129,7 @@ const Register = () => {
               onChange={handleChange}
             />
           </div>
-          <span className="errors">ajouter votre département</span>
+          <span className="errors">{formErrors.departement}</span>
         </div>
         <div className="fieldInput">
           <label htmlFor="password">Mot de passe</label>
@@ -148,7 +148,7 @@ const Register = () => {
               <HiEyeOff />
             </span>
           </div>
-          <span className="errors">ajouter un mot de passe valid</span>
+          <span className="errors">{formErrors.password}</span>
         </div>
         <input type="submit" value="S'inscrire" className="submit" />
       </form>

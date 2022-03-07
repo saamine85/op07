@@ -35,12 +35,12 @@ const Form = () => {
         </button>
       </div>
       <div className="form-group">
-        <animated.form action="" id="loginform" style={loginProps}>
+        <animated.div id="loginform" style={loginProps}>
           <Login />
-        </animated.form>
-        <animated.form id="registerform" style={registerProps}>
+        </animated.div>
+        <animated.div id="registerform" style={registerProps}>
           <Register />
-        </animated.form>
+        </animated.div>
       </div>
     </div>
   );

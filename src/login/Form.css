@@ -104,7 +104,7 @@ form {
   transition: all 0.1s ease;
 }
 
-form#registerform {
+#registerform {
   /* left: 500px; */
   top: -300px;
   position: relative;
