@@ -1,6 +1,6 @@
 import "./Form.css";
-import LoginForm from "./Login";
-import RegisterForm from "./Register";
+import Login from "./Login";
+import Register from "./Register";
 import React, { useState } from "react";
 import { useSpring, animated } from "react-spring";
 
@@ -36,10 +36,10 @@ const Form = () => {
       </div>
       <div className="form-group">
         <animated.form action="" id="loginform" style={loginProps}>
-          <LoginForm />
+          <Login />
         </animated.form>
         <animated.form id="registerform" style={registerProps}>
-          <RegisterForm />
+          <Register />
         </animated.form>
       </div>
     </div>

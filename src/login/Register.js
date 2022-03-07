@@ -39,8 +39,8 @@ const Register = () => {
   // in submitting
 
   useEffect(() => {
+    console.log(formValues);
     if (Object.keys(formErrors).length === 0 && isSubmit) {
-      // console.log(formValues);
       console.log(formErrors);
     }
   }, [formErrors]);
@@ -61,17 +61,17 @@ const Register = () => {
     }
     if (!values.email) {
       errors.email = "Ajouter Votre mail ";
-    }else if (!regEmail.test(values.email)) {
+    } else if (!regEmail.test(values.email)) {
       errors.email = "Ajouter un mail valid";
     }
     if (!values.departement) {
       errors.departement = "Ajouter votre département";
-    }  else if (!regDepartement.test(values.departement)) {
+    } else if (!regDepartement.test(values.departement)) {
       errors.departement = "Ajouter un prénom valid";
     }
     if (!values.password) {
       errors.password = "Ajouter votre mot de passe";
-    }  else if (!regPassword.test(values.password)) {
+    } else if (!regPassword.test(values.password)) {
       errors.password = "Ajouter un mot de passe valid";
     }
     return errors;
@@ -97,7 +97,7 @@ const Register = () => {
               onChange={handleChange}
             />
           </div>
-          <span className="errors">ajouter un prenom valid</span>
+          <span className="errors">{formErrors.username}</span>
         </div>
         <div className="fieldInput">
           <label htmlFor="email">Email</label>
