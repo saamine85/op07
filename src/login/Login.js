@@ -27,7 +27,7 @@ const Login = () => {
           </span>
         </div>
       </div>
-      <input type="submit" value="Se connecter" className="submit" />
+      <input type="submit" value="Se connecter" className="login-submit" />
     </form>
   );
 };

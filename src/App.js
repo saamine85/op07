@@ -19,7 +19,9 @@ function App() {
           <img src={groupo} alt="logo" />
         </div>
         <IconContext.Provider value={{ color: "white", size: "1.1em" }}>
-          <Form />
+          <React.Fragment>
+            <Form />
+          </React.Fragment>
         </IconContext.Provider>
       </div>
     </>

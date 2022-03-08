@@ -6,23 +6,39 @@ import { useSpring, animated } from "react-spring";
 
 const Form = () => {
   // const [registrationFormStatus, setRegistartionFormStatus] = useState(false);
-  const [registrationForm, setRegistrationForm] = useState(false);
+  // const [registrationForm, setRegistrationForm] = useState(false);
+  // const loginProps = useSpring({
+  //   left: registrationForm ? -500 : 0, // Login form sliding positions
+  //   // opacity: registrationForm ? 0 : 1,
+  // });
+  // const registerProps = useSpring({
+  //   // opacity: registrationForm ? 1 : 0,
+  // });
+
+  const [registerForm, setRegisterForm] = useState(false);
+  const [LoginForm, setLoginForm] = useState(true);
   const loginProps = useSpring({
-    left: registrationForm ? -500 : 0, // Login form sliding positions
+    // left: registrationForm ? 0 : -500, // Register form sliding positions
+    left: LoginForm ? 0 : -500,
+    // Login form sliding positions
     // opacity: registrationForm ? 0 : 1,
   });
   const registerProps = useSpring({
-    left: registrationForm ? 0 : 500, // Register form sliding positions
+    left: registerForm ? 0 : 500,
+    // right: LoginForm ? 0 : -500, // Register form sliding positions
+    // Register form sliding positions
     // opacity: registrationForm ? 1 : 0,
   });
 
-  function registerClicked() {
-    // alert("register clicked");
-    setRegistrationForm(true);
-  }
   function loginClicked() {
     // alert("login clicked");
-    setRegistrationForm(false);
+    setLoginForm(true);
+    setRegisterForm(false);
+  }
+  function registerClicked() {
+    // alert("register clicked");
+    setLoginForm(false);
+    setRegisterForm(true);
   }
   return (
     <div className="login-register-wrapper">
@@ -34,14 +50,14 @@ const Form = () => {
           S’inscrire
         </button>
       </div>
-      <div className="form-group">
+      {/* <div className="form-group"> */}
         <animated.div id="loginform" style={loginProps}>
           <Login />
         </animated.div>
         <animated.div id="registerform" style={registerProps}>
           <Register />
         </animated.div>
-      </div>
+      {/* </div> */}
     </div>
   );
 };

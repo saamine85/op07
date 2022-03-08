@@ -28,22 +28,23 @@ const Register = () => {
     // change all form values and get just name with value in
     setFormValues({ ...formValues, [name]: value });
     // console.log(formValues);
+    setFormErrors(validate(formValues));
   };
   // when submiting
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log(object);
     setFormErrors(validate(formValues));
+    console.log(formValues);
     setIsSubmit(true);
   };
   // in submitting
 
   useEffect(() => {
-    console.log(formValues);
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       console.log(formErrors);
     }
-  }, [formErrors,isSubmit,formValues]);
+  }, [formErrors, isSubmit, formValues]);
 
   // validation form that take values as a parameter
   const validate = (values) => {
@@ -52,8 +53,7 @@ const Register = () => {
     const regDepartement = /^[A-Za-zÀ-ÿ ,.'-]{3,20}$/;
     const regEmail = /^[a-zA-Z0-9.-_]+@{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
     //Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:
-    const regPassword =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/;
+    const regPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,16}$/;
     if (!values.username) {
       errors.username = "Ajouter votre nom et prénom";
     } else if (!regUser.test(values.username)) {
@@ -77,12 +77,11 @@ const Register = () => {
     return errors;
   };
   return (
-    <>
+    <form onSubmit={handleSubmit} className="register-form" >
       {/* verfiy ur object  */}
       {/* <div>
         <pre>{JSON.stringify(formValues, undefined, 2)}</pre>
       </div> */}
-      <form onSubmit={handleSubmit} className="register-form">
         <div className="fieldInput">
           <label htmlFor="text">Nom / Prénom</label>
           <div className="fullName">
@@ -106,7 +105,7 @@ const Register = () => {
               <BsEnvelope />
             </span>
             <input
-              type="email"
+              type="text"
               placeholder="Entrer votre adress mail"
               name="email"
               value={formValues.email}
@@ -150,9 +149,8 @@ const Register = () => {
           </div>
           <span className="errors">{formErrors.password}</span>
         </div>
-        <input type="submit" value="S'inscrire" className="submit" />
-      </form>
-    </>
+        <input type="submit" value="S'inscrire" className="register-submit" />
+    </form>
   );
 };
 
