@@ -1,0 +1,138 @@
+.login-register-wrapper {
+  height: 600px;
+  width: 480px;
+  margin: 5px auto;
+  /* margin: 0px auto 70px; */
+  padding: 20px 60px;
+  position: relative;
+  /* left: 600px; */
+  box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+  /* display: flex; */
+}
+@media (max-width: 767px) {
+  .login-register-wrapper {
+    margin: 0px;
+    width: 100%;
+  }
+}
+/* nav button */
+
+.nav-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin: 0px auto;
+  background-color: #fff;
+  width: 100%;
+  padding: 5px;
+  color: #c10c99;
+  border-radius: 40px;
+}
+button {
+  font-size: 1.1em;
+  padding: 10px 40px;
+  border-radius: 40px;
+  border: none;
+  background-color: #fff;
+}
+button:active,
+button:focus {
+  background-color: #c10c99;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* form styling  */
+/* .form-group {
+  max-height: 600px;
+} */
+form {
+  margin-top: 40px;
+  padding-bottom: 10px;
+  color: #fff;
+}
+.login-form {
+  position: relative;
+  /* left: -500px; */
+}
+.register-form {
+  margin-top: 20px;
+}
+.register-form input,
+.login-form input {
+  width: 100%;
+  height: 40px;
+  color: #fff;
+  outline: none;
+  border: none;
+  margin-left: 10px;
+  padding-left: 10px;
+  /* background: #29335c; */
+}
+input::placeholder {
+  color: #fff;
+  opacity: 0.5;
+}
+
+.form-group label {
+  margin-top: 10px;
+}
+.email,
+.password,
+.fullName,
+.departement {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #fff;
+}
+.fieldInput {
+  margin-bottom: 20px;
+}
+
+.login-submit,
+.register-submit {
+  font-size: 1.1em;
+  background-color: #c10c99;
+  cursor: pointer;
+  border-radius: 50px;
+  border: none !important;
+  text-align: center;
+  margin-left: 0px !important;
+  padding-left: 0px !important;
+}
+.register-submit {
+  margin-top: 10px;
+}
+.login-submit {
+  margin-top: 60px;
+}
+.submit:hover {
+  background-color: #fff;
+  color: #c10c99;
+}
+.icons > * {
+  fill: #fff;
+}
+form {
+  position: relative;
+  transition: all 0.05s ease;
+}
+
+#registerform {
+  top: -300px;
+  position: relative;
+}
+#loginform {
+  position: relative;
+}
+#loginBtn,
+#registerBtn {
+  transition: all 0.3s ease;
+}
+.errors {
+  display: flex;
+  justify-content: flex-end;
+  color: rgb(255, 222, 36);
+  margin: 0px;
+  padding: 0px;
+}

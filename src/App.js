@@ -2,17 +2,17 @@ import React from "react";
 // import "./login/Form.css";
 import "./index.css";
 // import './App.css'
-import groupo from "./login/groupo.png";
+import groupo from "./form/groupo.png";
 import { IconContext } from "react-icons";
-import { Header } from "./components/logo/Header";
+import { HeaderAcceuil } from "./components/logo/HeaderAcceuil";
 
-import Form from "./login/Form";
+import Form from "./form/Form";
 
 function App() {
   return (
     <>
       <div className="container">
-        <Header />
+        <HeaderAcceuil />
       </div>
       <div className="main">
         <div className="image">
