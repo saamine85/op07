@@ -2,7 +2,7 @@ import React from "react";
 // import "./login/Form.css";
 import "../styles/Home.css";
 // import './App.css'
-import groupo from "../form/groupo.png";
+import groupo from "../assets/groupo.png";
 import { IconContext } from "react-icons";
 import { HeaderAcceuil } from "../components/header/HeaderAcceuil";
 

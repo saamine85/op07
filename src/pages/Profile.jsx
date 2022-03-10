@@ -1,6 +1,9 @@
 import React from "react";
 import { HeaderPages } from "../components/header/HeaderPages";
 const Profile = () => {
+
+
+  
   return (
     <>
       <div className="container">
