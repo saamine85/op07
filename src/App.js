@@ -1,29 +1,38 @@
 import React from "react";
 // import "./login/Form.css";
 import "./index.css";
-// import './App.css'
-import groupo from "./form/groupo.png";
-import { IconContext } from "react-icons";
-import { HeaderAcceuil } from "./components/logo/HeaderAcceuil";
 
-import Form from "./form/Form";
+// import './App.css'
+
+import { Route, Routes } from "react-router-dom";
+import Posts from "./pages/Posts";
+import Profile from "./pages/Profile";
+import Home from "./pages/Home";
+import Error from "./pages/Error";
 
 function App() {
   return (
     <>
-      <div className="container">
-        <HeaderAcceuil />
-      </div>
-      <div className="main">
-        <div className="image">
-          <img src={groupo} alt="logo" />
-        </div>
-        <IconContext.Provider value={{ color: "white", size: "1.1em" }}>
-          <React.Fragment>
-            <Form />
-          </React.Fragment>
-        </IconContext.Provider>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+      <Routes>
+        <Route path="profile" element={<Profile />} />
+        {/* for nested route */}
+        {/* <Route path="profile/post" element={<Posts />} />
+        <Route path="profile/post/home" element={<App />} /> */}
+        {/* for nested route */}
+      </Routes>
+      <Routes>
+        <Route path="posts" element={<Posts />} />
+      </Routes>
+
+      {/* <Routes>
+        <Route path="/:testNumber" element={<Test />} />
+      </Routes> */}
+      {/* <Routes>
+        <Route path="*" element={<Error />} />
+      </Routes> */}
     </>
   );
 }

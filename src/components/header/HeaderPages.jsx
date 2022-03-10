@@ -21,6 +21,8 @@ export const HeaderPages = () => {
           </li>
           <li>
             <Link to="/">Se déconnecter</Link>
+            {/* pour tester les useparams */}
+            {/* <Link to="/test/45">Se déconnecter</Link> */}
           </li>
         </ul>
       </nav>

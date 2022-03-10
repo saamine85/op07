@@ -1,5 +1,5 @@
 import React from "react";
-import { HeaderPages } from "../components/logo/HeaderPages";
+import { HeaderPages } from "../components/header/HeaderPages";
 const Posts = () => {
   return (
     <>

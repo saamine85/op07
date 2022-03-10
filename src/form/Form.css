@@ -8,14 +8,18 @@
   /* left: 600px; */
   box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.8);
   overflow: hidden;
+  
   /* display: flex; */
 }
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
   .login-register-wrapper {
     margin: 0px;
     width: 100%;
+    background-image: url("./groupo.png");
+    background-size: cover;
+background-color: rgba(0, 0, 0,0.5);
   }
-}
+} */
 /* nav button */
 
 .nav-buttons {
