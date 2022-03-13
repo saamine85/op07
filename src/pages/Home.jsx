@@ -5,6 +5,7 @@ import "../styles/Home.css";
 import groupo from "../assets/groupo.png";
 import { IconContext } from "react-icons";
 import { HeaderAcceuil } from "../components/header/HeaderAcceuil";
+// import { supabase } from "../supabase/client";
 
 import Form from "../form/Form";
 
@@ -24,6 +25,13 @@ const Home = () => {
           </React.Fragment>
         </IconContext.Provider>
       </div>
+      {console.log(
+        `Supabase app url is :${process.env.REACT_APP_SUPABASE_URL}`
+      )}
+      {console.log(
+        `Supabase app key is:${process.env.REACT_APP_SUPABASE_ANON_KEY}`
+      )}
+      {/* {console.log(supabase)} */}
     </>
   );
 };

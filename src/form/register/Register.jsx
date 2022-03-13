@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { BsEnvelope } from "react-icons/bs";
 import { BiLock } from "react-icons/bi";
 import { HiEyeOff } from "react-icons/hi";
 import { HiOutlineOfficeBuilding } from "react-icons/hi";
 import { BsPersonPlus } from "react-icons/bs";
 import Validate from "../Validate";
-// import { supabase } from "../../supabase/supabase";
+// import { supabase } from "../../supabase/client";
+
 
 const Register = () => {
   //manage state to our inputfield
@@ -20,7 +21,7 @@ const Register = () => {
   // create a state error with emty object in initial
   const [formErrors, setFormErrors] = useState({});
   // add another state when submiting
-  const [isSubmit, setIsSubmit] = useState(false);
+  // const [isSubmit, setIsSubmit] = useState(false);
 
   // set loading
   // const [loading, setLoading] = useState(true);
@@ -36,20 +37,24 @@ const Register = () => {
     setFormErrors(Validate(formValues));
   };
   // when submiting
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(object);
     setFormErrors(Validate(formValues));
-    console.log(formValues);
-    setIsSubmit(true);
+    // const user = await supabase.signUp(formValues);
+  
+    // console.log(formValues);
+    // setIsSubmit(true);
+    // console.log(user);
   };
   // in submitting
 
-  useEffect(() => {
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
-      // getProfile();
-    }
-  }, [formErrors, isSubmit, formValues]);
+  // useEffect(() => {
+  //   if (Object.keys(formErrors).length === 0 && isSubmit) {
+  //     // getProfile();
+  //     // console.log(formValues);
+  //   }
+  // }, [formErrors, isSubmit, formValues]);
 
   // validation form that take values as a parameter
   // const getProfile = async () => {
