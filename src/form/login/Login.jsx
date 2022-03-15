@@ -4,21 +4,29 @@ import { BiLock } from "react-icons/bi";
 import { HiEyeOff } from "react-icons/hi";
 import { useAuth } from "../../supabase/Auth";
 import { useNavigate } from "react-router-dom";
-
 // import Validate from "../Validate";
 
 const Login = () => {
-  const error = "vous n'avez pas de compte";
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const { signIn } = useAuth();
   const navigate = useNavigate();
+
+  // const handleChange = (e) => {
+  //   // console.log(e.target);
+  //   //''''''distruct the object
+  //   const { name, value } = e.target;
+  //   // change all form values and get just name with value in
+  //   setFormValues({ ...formValues, [name]: value });
+  //   // console.log(formValues);
+  //   // setFormErrors(Validate(formValues));
+  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
     // try {
     // signIn();
-    const { error } = await signIn({ email, password });//
-    if (error) return error;
+    const { error } = await signIn({ email, password });
+    if (error) return Error("Error in login: " + error);
     navigate("/profile");
     // // const user = await supabase.signUp(formValues);
   };
@@ -54,7 +62,7 @@ const Login = () => {
           </span>
         </div>
       </div>
-
+      
       <input type="submit" value="Se connecter" className="login-submit" />
     </form>
   );
