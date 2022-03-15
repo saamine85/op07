@@ -25,7 +25,6 @@ const Login = () => {
 
   return (
     <form className="login-form" onSubmit={handleSubmit}>
-      <div>{error && JSON.stringify(error)}</div>
       <div className="fieldInput">
         <label htmlFor="email">Email</label>
         <div className="email">
