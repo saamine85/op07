@@ -1,0 +1,44 @@
+.side-bar {
+  margin-top: 30px;
+  /* background-color: #fff; */
+  min-width: 20%;
+  height: 100%;
+  position: fixed;
+  border-right: 1px solid rgb(240, 197, 6);
+}
+.side-bar h1 {
+  margin-top: 30px;
+  color: #fff;
+  text-align: center;
+}
+.side-bar img {
+  margin: 50px auto 30px;
+  display: block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 10px solid rgb(240, 197, 6);
+}
+.imgProfile {
+  position: relative;
+}
+.imgProfile .addPhoto {
+  position: absolute;
+  margin: 0px;
+  padding: 0px;
+  font-size: 20px;
+  top: 0%;
+  left: 70%;
+  color:rgb(240, 197, 6);
+  background-color: transparent;
+  /* background-color: red; */
+  /* width: 20; */
+}
+.info{
+text-align: center;
+}
+.info p{
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #fff;
+}

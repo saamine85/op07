@@ -1,4 +1,6 @@
 import React from "react";
+import SidebarPost from "../components/sidebare/SidebarPost";
+
 import { HeaderPages } from "../components/header/HeaderPages";
 const Posts = () => {
   return (
@@ -7,7 +9,7 @@ const Posts = () => {
         <HeaderPages />
       </div>
       <div className="container">
-        <h1>Post</h1>
+        <SidebarPost />
       </div>
     </>
   );

@@ -4,6 +4,7 @@ header {
   justify-content: space-between;
   margin-top: 20px;
   margin-bottom: 20px;
+  position: sticky;
 }
 .logo {
   text-align: center;
