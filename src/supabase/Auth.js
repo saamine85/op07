@@ -1,44 +1,43 @@
+import React, { useContext, useState, useEffect } from "react";
+import { supabase } from "../supabase";
 
-// import { useState } from 'react'
-// import { supabase } from '../../utils/supabase'
-// import Layout from "../../components/Layout";
-// export default function Auth() {
-//   const [loading, setLoading] = useState(false)
-//   const [error, setError] = useState('')
-//   const [email, setEmail] = useState('')
-//  const [password, setPassword] = useState('')
-                               
-                          
-//   const handleRegister = async (data) => {
-//     setError("");
-//     const { user, session, error } = await supabase.auth.signUp({
-//       email: data.email,
-//       password: data.password,
-//     });
-//     if (error) {
-//       setError(error.message);
-//       return;
-//     }
-//     console.log({ user, session, error });
-//   };
+const AuthContext = React.createContext();
 
-//    return(
-//      <>
-//      <div className="row flex flex-center">
-//  <div className="col-6 form-widget">
-//    <n1 className="description">Register below</h1>
-//    <div className="form-control">
-//      <label className="label">
-//        <span className="label-text">E-mail</span>
-//      </ Label>
-//      <input
-//        type="email"
-//        placeholder="email"
-//        className="input input-bordered"
-//        value={email}
-//        onChange={(e) => setEmail(e.target.value)}
-//        />
-//    </div>
-//        </>
-//    );
-//   }
+export function AuthProvider({ children }) {
+  const [user, setUser] = useState();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const session = supabase.auth.session();
+
+    setUser((session && session?.user) ?? null); // ca veut dire quoi
+    setLoading(false);
+
+    const { data: listener } = supabase.auth.onAuthStateChange(
+      async (event, session) => {
+        setUser((session && session?.user) ?? null);
+        setLoading(false);
+      }
+    );
+
+    return () => {
+      listener?.unsubscribe();
+    };
+  }, []);
+
+  const value = {
+    signUp: (data) => supabase.auth.signUp(data),
+    signIn: (data) => supabase.auth.signIn(data),
+    signOut: () => supabase.auth.signOut(),
+    user,
+  };
+
+  return (
+    <AuthContext.Provider value={value}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
+}
+export function useAuth() {
+  return useContext(AuthContext);
+}

@@ -6,7 +6,8 @@ import { HiOutlineOfficeBuilding } from "react-icons/hi";
 import { BsPersonPlus } from "react-icons/bs";
 import Validate from "../Validate";
 // import { supabase } from "../../supabase/client";
-
+import { useAuth } from "../../supabase/Auth";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   //manage state to our inputfield
@@ -27,6 +28,8 @@ const Register = () => {
   // const [loading, setLoading] = useState(true);
 
   // when change our field then emty
+  const { signUp } = useAuth();
+  const navigate = useNavigate();
   const handleChange = (e) => {
     // console.log(e.target);
     //''''''distruct the object
@@ -40,10 +43,14 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(object);
-    setFormErrors(Validate(formValues));
+    const { error } = await signUp(formValues);
+
+    if (error) return setFormErrors(Validate(formValues));
+
     // const user = await supabase.signUp(formValues);
-  
-    // console.log(formValues);
+    navigate("/profile");
+    console.log(formValues.username);
+    console.log(formValues.password);
     // setIsSubmit(true);
     // console.log(user);
   };
@@ -56,60 +63,6 @@ const Register = () => {
   //   }
   // }, [formErrors, isSubmit, formValues]);
 
-  // validation form that take values as a parameter
-  // const getProfile = async () => {
-  //   try {
-  //     setLoading(true);
-  //     const user = supabase.auth.user();
-
-  //     let { data, error, status } = await supabase
-  //       .from("profiles")
-  //       .select(`username, email, departement,password`)
-  //       .eq("id", user.id)
-  //       .single();
-
-  //     if (error && status !== 406) {
-  //       throw error;
-  //     }
-
-  //     if (data) {
-  //       setFormValues();
-  //     }
-  //   } catch (error) {
-  //     alert(error.message);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
-  // const updateProfile = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     setLoading(true);
-  //     const user = supabase.auth.user();
-
-  //     const updates = {
-  //       id: user.id,
-  //       username,
-  //       website,
-  //       avatar_url,
-  //       updated_at: new Date(),
-  //     };
-
-  //     let { error } = await supabase.from("profiles").upsert(updates, {
-  //       returning: "minimal", // Don't return the value after inserting
-  //     });
-
-  //     if (error) {
-  //       throw error;
-  //     }
-  //   } catch (error) {
-  //     alert(error.message);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
   return (
     <form onSubmit={handleSubmit} className="register-form">
       {/* verfiy ur object  */}

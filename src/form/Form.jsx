@@ -3,6 +3,7 @@ import Login from "./login/Login";
 import Register from "./register/Register";
 import React, { useState } from "react";
 import { useSpring, animated } from "react-spring";
+import { AuthProvider } from "../supabase/Auth";
 
 const Form = () => {
   const [registerForm, setRegisterForm] = useState(false);
@@ -31,24 +32,26 @@ const Form = () => {
     setRegisterForm(true);
   }
   return (
-    <div className="login-register-wrapper">
-      <div className="nav-buttons">
-        <button onClick={loginClicked} id="loginBtn">
-          Se connecter
-        </button>
-        <button onClick={registerClicked} id="registerBtn">
-          S’inscrire
-        </button>
+    <AuthProvider>
+      <div className="login-register-wrapper">
+        <div className="nav-buttons">
+          <button onClick={loginClicked} id="loginBtn">
+            Se connecter
+          </button>
+          <button onClick={registerClicked} id="registerBtn">
+            S’inscrire
+          </button>
+        </div>
+        {/* <div className="form-group"> */}
+        <animated.div id="loginform" style={loginProps}>
+          <Login />
+        </animated.div>
+        <animated.div id="registerform" style={registerProps}>
+          <Register />
+        </animated.div>
+        {/* </div> */}
       </div>
-      {/* <div className="form-group"> */}
-      <animated.div id="loginform" style={loginProps}>
-        <Login />
-      </animated.div>
-      <animated.div id="registerform" style={registerProps}>
-        <Register />
-      </animated.div>
-      {/* </div> */}
-    </div>
+    </AuthProvider>
   );
 };
 export default Form;

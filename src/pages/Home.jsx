@@ -29,7 +29,7 @@ const Home = () => {
         `Supabase app url is :${process.env.REACT_APP_SUPABASE_URL}`
       )}
       {console.log(
-        `Supabase app key is:${process.env.REACT_APP_SUPABASE_ANON_KEY}`
+        `Supabase app key is:${process.env.REACT_APP_SUPABASE_PUBLIC_KEY}`
       )}
       {/* {console.log(supabase)} */}
     </>
