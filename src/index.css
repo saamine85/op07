@@ -1,10 +1,21 @@
 html,
 body,
-body * {
+* {
   box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #29335c;
+  background-color: var(--main-color);
+  color: aliceblue;
 }
 
+:root {
+  --main-color: #29335c;
+  --button-color: #c10c99;
+  --border-color: #f3a712;
+}
+section{
+  width: 100%;
+  height: 100vh;
+  /* background-color: #fff; */
+}

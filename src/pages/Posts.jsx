@@ -2,6 +2,7 @@ import React from "react";
 import SidebarPost from "../components/sidebare/SidebarPost";
 
 import { HeaderPages } from "../components/header/HeaderPages";
+import MainPost from "../components/main/MainPost";
 const Posts = () => {
   return (
     <>
@@ -9,7 +10,10 @@ const Posts = () => {
         <HeaderPages />
       </div>
       <div className="container">
-        <SidebarPost />
+        <section className="mainProfile">
+          <SidebarPost />
+          <MainPost />
+        </section>
       </div>
     </>
   );

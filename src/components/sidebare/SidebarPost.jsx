@@ -14,7 +14,7 @@ const SidebarPost = () => {
       <h1>Posts</h1>
       <div className="imgProfile">
         <img src={Logogm} alt="" />
-        <div className="addPhoto">
+        <div className="addAvatar">
           <MdOutlineAddAPhoto />
         </div>
       </div>
