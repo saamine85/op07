@@ -19,3 +19,9 @@ section{
   height: 100vh;
   /* background-color: #fff; */
 }
+.fixed{
+  position: fixed;
+  top: -5px;
+  z-index: 999;
+  width: 100%;
+}

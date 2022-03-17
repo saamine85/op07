@@ -5,12 +5,14 @@ import MainProfile from "../components/main/MainProfile";
 const Profile = () => {
   return (
     <>
-      <div className="container">
-        <HeaderPages />
-        {/* <MainProfile /> */}
+      <div className="fixed">
+        <div className="container">
+          <HeaderPages />
+          {/* <MainProfile /> */}
+        </div>
       </div>
       <div className="container">
-        <section >
+        <section>
           <Sidebar />
           <MainProfile />
         </section>

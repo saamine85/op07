@@ -6,8 +6,10 @@ import MainPost from "../components/main/MainPost";
 const Posts = () => {
   return (
     <>
-      <div className="container">
-        <HeaderPages />
+      <div className="fixed">
+        <div className="container">
+          <HeaderPages />
+        </div>
       </div>
       <div className="container">
         <section className="mainProfile">
