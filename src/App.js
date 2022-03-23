@@ -15,9 +15,8 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-
-        <Route path="profile" element={<Profile />} />
-        <Route path="posts" element={<Posts />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="posts" element={<Posts />} />
         <Route path="*" element={<Error />} />
 
         {/* for nested route */}

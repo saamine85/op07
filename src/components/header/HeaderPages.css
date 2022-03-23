@@ -37,5 +37,8 @@ header a:hover {
   color: rgb(253, 253, 253);
   background-color: var(--button-color);
   transition-duration: 0.5s;
-  transition-timing-function: ease-out ;
+  transition-timing-function: ease-out;
+}
+.active {
+  background-color: #fd2d01;
 }

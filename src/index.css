@@ -6,7 +6,7 @@ body,
   margin: 0;
   padding: 0;
   background-color: var(--main-color);
-  color: aliceblue;
+  /* color: aliceblue; */
 }
 
 :root {
@@ -24,4 +24,10 @@ section{
   top: -5px;
   z-index: 999;
   width: 100%;
+}
+.mainprofile {
+  display: flex;
+  width: 70%;
+  height: 100vh;
+  background-color: #fff;
 }

@@ -6,12 +6,8 @@
   position: fixed;
   /* border-right: 1px solid #F3A712; */
 }
-.side-bar h1 {
-  /* margin-top: 30px; */
-  color: #fff;
-  text-align: center;
-}
-.side-bar img {
+
+.side-bar .imgProfile {
   margin: 50px auto 30px;
   display: block;
   width: 150px;
@@ -19,27 +15,9 @@
   border-radius: 50%;
   border: 10px solid var(--border-color);
   background-color: rgb(218, 216, 216);
-}
-.imgProfile {
   position: relative;
 }
-.imgProfile .addAvatar {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  font-size: 20px;
-  top: 5%;
-  left: 60%;
-  color: rgb(255, 255, 255);
-  background-color: #29335c;
-  cursor: pointer;
-  /* background-color: red; */
-  /* width: 20; */
-}
+
 .info {
   text-align: center;
 }
@@ -47,21 +25,4 @@
   margin-bottom: 20px;
   font-size: 20px;
   color: #fff;
-}
-.side-bar button {
-  background-color: var(--button-color);
-  padding: 5px 15px;
-  font-size: 15px;
-  cursor: pointer;
-  margin: 30px 50px;
-}
-.side-bar button:hover {
-  background-color: rgb(230, 20, 20);
-  transition-duration: 0.8s;
-}
-.mainprofile {
-  display: flex;
-  width: 70%;
-  height: 100vh;
-  background-color: #fff;
 }

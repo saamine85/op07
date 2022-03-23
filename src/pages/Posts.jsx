@@ -1,22 +1,26 @@
 import React from "react";
-import SidebarPost from "../components/sidebare/SidebarPost";
+import Sidebar from "../components/sidebare/Sidebar";
 
 import { HeaderPages } from "../components/header/HeaderPages";
-import MainPost from "../components/main/MainPost";
+import AddPost from "../components/main/AddPost";
+import { AuthProvider } from "../supabase/Auth";
+
 const Posts = () => {
   return (
     <>
-      <div className="fixed">
-        <div className="container">
-          <HeaderPages />
+      <AuthProvider>
+        <div className="fixed">
+          <div className="container">
+            <HeaderPages />
+          </div>
         </div>
-      </div>
-      <div className="container">
-        <section className="mainProfile">
-          <SidebarPost />
-          <MainPost />
-        </section>
-      </div>
+        <div className="container">
+          <section className="mainProfile">
+            <Sidebar />
+            <AddPost />
+          </section>
+        </div>
+      </AuthProvider>
     </>
   );
 };

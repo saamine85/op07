@@ -10,7 +10,10 @@ const MainProfile = () => {
         {/* <h1>Bienvenue {userName} !</h1> */}
         <div className="couverture">
           <img src={groupo} alt="" />
-          <button>Changer</button>
+          <label htmlFor="addCouverture" style={{ cursor: "pointer"}}>
+            <span>Changer</span>
+            <input type="file" id="addCouverture" style={{display:"none"}} />
+          </label>
         </div>
       </div>
     </>

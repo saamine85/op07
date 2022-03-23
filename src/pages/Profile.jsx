@@ -11,8 +11,9 @@ const Profile = () => {
           {/* <MainProfile /> */}
         </div>
       </div>
+      {/* <button>Supprimer votre compte</button> */}
       <div className="container">
-        <section>
+        <section className="mainProfile">
           <Sidebar />
           <MainProfile />
         </section>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Logogm from "./icon.svg";
 import "./HeaderPages.css";
 // import Navbar from "../navigation/Navbar.css"
@@ -14,13 +14,17 @@ export const HeaderPages = () => {
       <nav>
         <ul>
           <li>
-            <Link to="/Profile">Profile</Link>
+            <NavLink  to="/Profile">
+              Profile
+            </NavLink>
           </li>
           <li>
-            <Link to="/Posts">Posts</Link>
+            <NavLink  to="/Posts">
+              Posts
+            </NavLink>
           </li>
           <li>
-            <Link to="/">Se déconnecter</Link>
+            <NavLink to="/">Se déconnecter</NavLink>
             {/* pour tester les useparams */}
             {/* <Link to="/test/45">Se déconnecter</Link> */}
           </li>

@@ -35,7 +35,7 @@ const Form = () => {
     <AuthProvider>
       <div className="login-register-wrapper">
         <div className="nav-buttons">
-          <button onClick={loginClicked} id="loginBtn">
+          <button   onClick={loginClicked} id="loginBtn">
             Se connecter
           </button>
           <button onClick={registerClicked} id="registerBtn">

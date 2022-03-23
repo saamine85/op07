@@ -1,6 +1,5 @@
 .content {
   width: 70%;
-  height: 100%;
   margin-top: 80px;
   margin-left: 28%;
 }
@@ -20,72 +19,22 @@
   width: 100%;
   height: 100%;
   border-radius: 15px 0px 0px 15px;
-  margin-top: 30px;
+  margin-top: 70px;
 }
-.couverture button {
+.couverture label {
   position: absolute;
   left: 10px;
-  top: 40px;
+  top: 80px;
+  border-radius: 20px;
+  color: aliceblue;
+}
+.couverture label span {
   padding: 5px 15px;
+  border-radius: 20px;
   background-color: var(--main-color);
 }
-.couverture button:hover{
+.couverture label span:hover {
   background-color: var(--button-color);
   cursor: pointer;
-  transition-duration: .5s;
-}
-.post {
-  margin-top: 30px;
-  /* border: 1px solid; */
-  padding-top: 20px;
-  border-bottom: 1px solid var(--border-color);
-}
-.homeBare {
-  color: white;
-  /* border: 1px solid var(--border-color); */
-  border-top: 1px solid var(--border-color);
-  padding: 10px 20px;
-  margin-bottom: 30px;
-  margin-top: 30px;
-}
-.userDetails {
-  display: flex;
-  margin-bottom: 30px;
-  align-items: center;
-}
-.details {
-  margin-left: 20px;
-  display: flex;
-  flex-direction: column;
-  color: #ffffff;
-  font-size: 1.2rem;
-}
-textarea {
-  max-width: 80%;
-  min-width: 80%;
-  min-height: 70px;
-  margin-bottom: 30px;
-  margin-left: 70px;
-  /* border: 1px solid var(--border-color); */
-  border: none;
-  outline: none;
-  border-radius: 0px 0px 40px 0px;
-  background-color: #344174;
-  padding-left: 10px;
-  padding-top: 10px;
-  font-size: 17px;
-  color: var(--border-color);
-}
-.icons {
-  display: flex;
-  width: fit-content;
-  gap: 1.25rem;
-  margin-left: 80px;
-  margin-bottom: 30px;
-  font-size: 20px;
-  cursor: pointer;
-}
-.userDetails img {
-  background-color: #fff;
-  border-radius: 50%;
+  transition-duration: 0.5s;
 }

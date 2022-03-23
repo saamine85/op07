@@ -1,35 +1,30 @@
+
 import React from "react";
-// import { Link } from "react-router-dom";
-import groupo from "../../assets/groupo.png";
-
-// import Logogm from "../header/icon.svg";
-import { MdOutlineAddAPhoto } from "react-icons/md";
+import GetAvatar from "../Avatar/GetAvatar";
+import Delete from "../delete/Delete";
 import "./Sidebar.css";
-
 const Sidebar = () => {
-  const userName = "John Doe";
-  const departement = "ux-designer";
-  const email = "johndo@foo.com";
 
   return (
     <>
       <div className="side-bar">
-        <h1>Profile</h1>
-        <div className="imgProfile">
-          <img src={groupo} alt="" />
-          <div className="addAvatar">
-            <MdOutlineAddAPhoto />
-          </div>
-        </div>
+        {/* <div className="imgProfile"> */}
+       <GetAvatar/>
         <div className="info">
-          <p>{userName}</p>
-          <p> {departement} </p>
-          <p>{email}</p>
+          <p>userName</p>
+          <p> departement </p>
+          <p>email</p>
+          <Delete className="delete" />
         </div>
-          <button>Supprimer votre compte</button>
       </div>
     </>
   );
 };
 
 export default Sidebar;
+
+
+
+// REACT_APP_SUPABASE_URL = "https://ztjrqxiwhlppuoymqmni.supabase.co";
+// REACT_APP_SUPABASE_PUBLIC_KEY =
+//   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp0anJxeGl3aGxwcHVveW1xbW5pIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDcyNTUxMTcsImV4cCI6MTk2MjgzMTExN30.nfuhWTFa-QFQVLRUM7OKQ953MgUH2yKvBvDeqy1j6yg";

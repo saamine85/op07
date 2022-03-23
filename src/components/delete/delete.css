@@ -1,0 +1,9 @@
+.delete{
+  background-color: var(--button-color);
+  color: aliceblue;
+  margin-top: 100px;
+}
+.delete:hover{
+  background-color:  #fd2d01;
+  transition: .3s ease-out;
+}

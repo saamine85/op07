@@ -5,8 +5,8 @@ import { HiEyeOff } from "react-icons/hi";
 import { HiOutlineOfficeBuilding } from "react-icons/hi";
 import { BsPersonPlus } from "react-icons/bs";
 import Validate from "../Validate";
-// import { supabase } from "../../supabase/client";
-import { useAuth } from "../../supabase/Auth";
+import { supabase } from "../../supabase";
+// import { useAuth } from "../../supabase/Auth";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
@@ -28,7 +28,7 @@ const Register = () => {
   // const [loading, setLoading] = useState(true);
 
   // when change our field then emty
-  const { signUp } = useAuth();
+  // const signUp = useAuth();
   const navigate = useNavigate();
   const handleChange = (e) => {
     // console.log(e.target);
@@ -43,16 +43,26 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(object);
-    const { error } = await signUp(formValues);
+    const { data } = await supabase.from("profile").insert([
+      {
+        email: formValues.email,
+        username: formValues.username,
+        departement: formValues.departement,
+      },
+    ]);
+    console.log(data);
+    const { error } = await supabase.auth.signUp({
+      email: formValues.email,
+      username: formValues.username,
+      departement: formValues.departement,
+      password: formValues.password,
+    });
+    console.log(error);
+    // console.log(error);
 
-    if (error) return setFormErrors(Validate(formValues));
-
-    // const user = await supabase.signUp(formValues);
     navigate("/profile");
-    console.log(formValues.username);
-    console.log(formValues.password);
-    // setIsSubmit(true);
-    // console.log(user);
+    console.log(formValues);
+  
   };
   // in submitting
 
