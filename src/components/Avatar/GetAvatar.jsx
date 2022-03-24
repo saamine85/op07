@@ -5,7 +5,7 @@ import { supabase } from "../../supabase";
 const GetAvatar = () => {
   const [avatar_url, setAvatarUrl] = useState(null);
   const updateProfile = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     try {
       const user = supabase.auth.user();
 
@@ -16,7 +16,7 @@ const GetAvatar = () => {
         updated_at: new Date(),
       };
 
-      let { error } = await supabase.from("profiles").upsert(updates, {
+      let { error } = await supabase.from("profile").upsert(updates, {
         returning: "minimal", // Don't return the value after inserting
       });
 

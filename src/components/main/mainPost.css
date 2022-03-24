@@ -11,6 +11,7 @@
 .allPost {
   padding-top: 20px;
   border-bottom: 1px solid var(--border-color);
+  margin-bottom: 70px;
 }
 .homeBare {
   color: white;

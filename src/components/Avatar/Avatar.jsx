@@ -42,7 +42,7 @@ function Avatar({ url, size, onUpload }) {
       const fileName = `${Math.random()}.${fileExt}`;
       const filePath = `${fileName}`;
 
-      let { error: uploadError } = await supabase.storage
+      let { data , error: uploadError } = await supabase.storage
         .from("avatars")
         .upload(filePath, file);
 
@@ -51,6 +51,7 @@ function Avatar({ url, size, onUpload }) {
       }
 
       onUpload(filePath);
+      console.log(data);
     } catch (error) {
       alert(error.message);
     } finally {

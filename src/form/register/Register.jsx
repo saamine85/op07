@@ -43,22 +43,24 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(object);
-    const { data } = await supabase.from("profile").insert([
-      {
-        email: formValues.email,
-        username: formValues.username,
-        departement: formValues.departement,
-      },
-    ]);
-    console.log(data);
-    const { error } = await supabase.auth.signUp({
+    const { user, error } = await supabase.auth.signUp({
       email: formValues.email,
       username: formValues.username,
       departement: formValues.departement,
       password: formValues.password,
     });
+    console.log(user);
+    const { data } = await supabase.from("profile").insert([
+      {
+        email: formValues.email,
+        username: formValues.username,
+        departement: formValues.departement,
+        user_id: user.id,
+      },
+    ]);
+    console.log(data);
+    
     console.log(error);
-    // console.log(error);
 
     navigate("/profile");
     console.log(formValues);
