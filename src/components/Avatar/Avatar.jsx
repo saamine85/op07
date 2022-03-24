@@ -18,7 +18,6 @@ function Avatar({ url, size, onUpload }) {
       const { data, error } = await supabase.storage
         .from("avatars")
         .download(path);
-      console.log(data);
       if (error) {
         throw error;
       }
@@ -42,7 +41,7 @@ function Avatar({ url, size, onUpload }) {
       const fileName = `${Math.random()}.${fileExt}`;
       const filePath = `${fileName}`;
 
-      let { data , error: uploadError } = await supabase.storage
+      let { error: uploadError } = await supabase.storage
         .from("avatars")
         .upload(filePath, file);
 
@@ -51,7 +50,8 @@ function Avatar({ url, size, onUpload }) {
       }
 
       onUpload(filePath);
-      console.log(data);
+      console.log(filePath);
+    
     } catch (error) {
       alert(error.message);
     } finally {
@@ -63,7 +63,7 @@ function Avatar({ url, size, onUpload }) {
     <div className="imgProfile" style={{ width: size }} aria-live="polite">
       <div className="addImage">
         <img
-          src={avatarUrl ? avatarUrl : `avatar_url/${size}x${size}`}
+          src={avatarUrl ? avatarUrl : `avatars/${size}x${size}`}
           alt={avatarUrl ? "Avatar" : ""}
           style={{ height: "100%", width: "100%" }}
         />
@@ -80,20 +80,18 @@ function Avatar({ url, size, onUpload }) {
             justifyContent: "center",
             color: "#fff",
           }}
-          
         >
           Uploading...
         </span>
       ) : (
         <>
-          
           <div className="addAvatar">
-            <label htmlFor="avatar" style={{ cursor: "pointer" }}>
+            <label htmlFor="single" style={{ cursor: "pointer" }}>
               <MdOutlineAddAPhoto />
             </label>
             <input
               type="file"
-              id="avatar"
+              id="single"
               accept="image/*"
               style={{ display: "none" }}
               onChange={uploadAvatar}

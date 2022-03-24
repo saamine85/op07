@@ -47,9 +47,8 @@ const AddPost = () => {
        .from("posts")
        .delete()
        .eq({ content, user_id: session.user.id });
-
-     setContent("");
    };
+   
   const handleContent = (e) => {
     setContent(e.target.value);
   };

@@ -10,6 +10,7 @@ const Sidebar = () => {
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {
+  
     setSession(supabase.auth.session());
     supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
@@ -20,7 +21,7 @@ const Sidebar = () => {
     if (session) {
       fetchProfile();
     }
-  }, [session]);
+  });
 
   const fetchProfile = async () => {
     let { data: profile } = await supabase
@@ -39,16 +40,15 @@ const Sidebar = () => {
           <>
             <GetAvatar />
             <div className="info">
-              <p>{profile.email}</p>
-              <p> {profile.departement}</p>
               <p>{profile.username}</p>
+              <p> {profile.departement}</p>
+              <p>{profile.email}</p>
               <Delete className="delete" />
             </div>
           </>
         ) : (
           <></>
         )}
-        {/* <div className="imgProfile"> */}
       </div>
     </>
   );

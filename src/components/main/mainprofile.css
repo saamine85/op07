@@ -24,7 +24,7 @@
 .couverture label {
   position: absolute;
   left: 10px;
-  top: 80px;
+  top: 180px;
   border-radius: 20px;
   color: aliceblue;
 }
@@ -38,3 +38,4 @@
   cursor: pointer;
   transition-duration: 0.5s;
 }
+

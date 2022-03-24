@@ -14,8 +14,8 @@ const Delete = () => {
   }, []);
   const handleDelete = async () => {
     await supabase.from("profile").delete({ user_id: session.user.id });
-    // console.log(user_id)
-    console.log(session.user.id);
+    // // console.log(user_id)
+    // console.log(session.user.id);
   };
   return (
     <>
