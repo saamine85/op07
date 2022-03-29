@@ -4,7 +4,7 @@
   width: 20%;
   height: 100%;
   position: fixed;
-  /* border-right: 1px solid #F3A712; */
+  border-right: 1px solid #F3A712;
 }
 
 .side-bar .imgProfile {

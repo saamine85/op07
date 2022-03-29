@@ -4,14 +4,14 @@
 // // import { FaRegCommentDots } from "react-icons/fa";
 // import { BsImages } from "react-icons/bs";
 // import { RiSendPlaneFill } from "react-icons/ri";
-// // import Post from "../Post/Post";
-// // import GetAvatar from "../Avatar/GetAvatar";
+// import Post from "../Post/Post";
+// import GetAvatar from "../Avatar/GetAvatar";
 // import { supabase } from "../../supabase";
 
 // const AllPost = () => {
 //   // const [profile, setProfile] = useState("");
 //   // // const userName = "John Doe";
-//   // const departement = "Ux-Designer";
+//   // // const departement = "Ux-Designer";
 //   // // const username  = profile[0];
 //   // const submitPost = () => {};
 //   // // console.log(GetAvatar)
@@ -28,9 +28,10 @@
 //   //   departement: profile[0].departement,
 //   //   email: profile[0].email,
 //   // };
-//   // let user = profile.map((obj) => obj.username);
-//   // console.log(user);
+//   // // let user = profile.map((obj) => obj.username);
+//   // // console.log(user);
 //   const [posts, setPosts] = useState([]);
+//   const [session, setSession] = useState();
 
 //   useEffect(() => {
 //     fetchPosts();
@@ -85,31 +86,31 @@
 // };
 
 // export default AllPost;
-// {/* <div className="content">
-//           <div className="post">
-//             <div className="homeBare">
-//               <span>tout les posts</span>
-//               {/* {console.log(profile)} */}
-//             </div>
-//             <div className="userDetails">
-//               <div className="mainAvatar">
-//                 <div className="imageAvatar">
-//                   {/* <img src={GetAvatar} alt="" /> */}
-//                   {/* <GetAvatar/> */}
-//                 </div>
-//               </div>
-//               <div className="details">
-//                 {/* <span>{user.username}</span> */}
-//                 <span style={{ color: "#b8b6b6", fontSize: ".9rem" }}>
-//                   {/* {departement} */}
-//                 </span>
-//               </div>
-//             </div>
-//             <div >
-//               {posts.map((post) => (
-//                 <div key={post.id}>{post.content}</div>
-//               ))}
-//             </div>
-//           </div>
-//         </div>
-//       </div> */}
+// // {/* <div className="content">
+// //           <div className="post">
+// //             <div className="homeBare">
+// //               <span>tout les posts</span>
+// //               {/* {console.log(profile)} */}
+// //             </div>
+// //             <div className="userDetails">
+// //               <div className="mainAvatar">
+// //                 <div className="imageAvatar">
+// //                   {/* <img src={GetAvatar} alt="" /> */}
+// //                   {/* <GetAvatar/> */}
+// //                 </div>
+// //               </div>
+// //               <div className="details">
+// //                 {/* <span>{user.username}</span> */}
+// //                 <span style={{ color: "#b8b6b6", fontSize: ".9rem" }}>
+// //                   {/* {departement} */}
+// //                 </span>
+// //               </div>
+// //             </div>
+// //             <div >
+// //               {posts.map((post) => (
+// //                 <div key={post.id}>{post.content}</div>
+// //               ))}
+// //             </div>
+// //           </div>
+// //         </div>
+// //       </div> */}

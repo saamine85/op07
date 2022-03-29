@@ -41,15 +41,14 @@ const AddPost = () => {
     setContent("");
     fetchPosts(); // you can here just listening to changes in database
   };
-   const handleDelete = async () => {
-     //post content to supabase
-     await supabase
-       .from("posts")
-       .delete()
-       .eq({ content, user_id: session.user.id });
+  const handleDelete = async () => {
+    //post content to supabase
+    await supabase
+      .from("posts")
+      .delete()
+      .eq({ content, user_id: session.user.id });
+  };
 
-     setContent("");
-   };
   const handleContent = (e) => {
     setContent(e.target.value);
   };
@@ -131,7 +130,7 @@ const AddPost = () => {
                 <div className="icons">
                   <FaCommentDots
                     style={{ fill: "#f3a712" }}
-                    onClick={handleSubmit}
+                    // onClick={handleSubmit}
                   />
                   <div className="addAvatar">
                     <label htmlFor="avatar" style={{ cursor: "pointer" }}>
@@ -148,7 +147,7 @@ const AddPost = () => {
                   </div>
                   <BsBookmarkPlus
                     style={{ fill: "#f3a712" }}
-                    onClick={handleSubmit}
+                    // onClick={handleSubmit}
                   />
                 </div>
                 <RiDeleteBin6Line

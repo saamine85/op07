@@ -59,12 +59,11 @@ const Register = () => {
       },
     ]);
     console.log(data);
-    
+
     console.log(error);
 
     navigate("/profile");
     console.log(formValues);
-  
   };
   // in submitting
 
@@ -93,6 +92,7 @@ const Register = () => {
             name="username"
             value={formValues.username}
             onChange={handleChange}
+            // readOnly={true}
           />
         </div>
         <span className="errors">{formErrors.username}</span>
@@ -109,6 +109,7 @@ const Register = () => {
             name="email"
             value={formValues.email}
             onChange={handleChange}
+            autoComplete="off"
           />
         </div>
         <span className="errors">{formErrors.email} </span>

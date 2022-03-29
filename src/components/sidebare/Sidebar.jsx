@@ -7,7 +7,7 @@ import "./Sidebar.css";
 import { useEffect, useState } from "react";
 const Sidebar = () => {
   const [session, setSession] = useState(null);
-  const [profile, setProfile] = useState(null);
+  const [profile, setProfile] = useState("");
 
   useEffect(() => {
     setSession(supabase.auth.session());
@@ -20,7 +20,7 @@ const Sidebar = () => {
     if (session) {
       fetchProfile();
     }
-  }, [session]);
+  });
 
   const fetchProfile = async () => {
     let { data: profile } = await supabase
@@ -33,24 +33,23 @@ const Sidebar = () => {
   };
 
   return (
-    <>
-      <div className="side-bar">
-        {profile ? (
-          <>
-            <GetAvatar />
-            <div className="info">
-              <p>{profile.email}</p>
-              <p> {profile.departement}</p>
-              <p>{profile.username}</p>
-              <Delete className="delete" />
-            </div>
-          </>
-        ) : (
-          <></>
-        )}
-        {/* <div className="imgProfile"> */}
-      </div>
-    </>
+    // <>
+    <div className="side-bar">
+      {profile ? (
+        <>
+          <GetAvatar />
+          <div className="info">
+            <p>{profile.username}</p>
+            <p> {profile.email}</p>
+            <p>{profile.departement}</p>
+            <Delete className="delete" />
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
+    </div>
+    // {/* </> */}
   );
 };
 
