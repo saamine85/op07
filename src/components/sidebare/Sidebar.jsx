@@ -10,6 +10,7 @@ const Sidebar = () => {
   const [profile, setProfile] = useState("");
 
   useEffect(() => {
+  
     setSession(supabase.auth.session());
     supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
@@ -33,6 +34,7 @@ const Sidebar = () => {
   };
 
   return (
+<<<<<<< HEAD
     // <>
     <div className="side-bar">
       {profile ? (
@@ -50,6 +52,25 @@ const Sidebar = () => {
       )}
     </div>
     // {/* </> */}
+=======
+    <>
+      <div className="side-bar">
+        {profile ? (
+          <>
+            <GetAvatar />
+            <div className="info">
+              <p>{profile.username}</p>
+              <p> {profile.departement}</p>
+              <p>{profile.email}</p>
+              <Delete className="delete" />
+            </div>
+          </>
+        ) : (
+          <></>
+        )}
+      </div>
+    </>
+>>>>>>> f7af2e0331f2d2ff5e024012b98545c49886eaa6
   );
 };
 
