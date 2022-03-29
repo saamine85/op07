@@ -41,7 +41,6 @@ const AddPost = () => {
     setContent("");
     fetchPosts(); // you can here just listening to changes in database
   };
-<<<<<<< HEAD
   const handleDelete = async () => {
     //post content to supabase
     await supabase
@@ -50,16 +49,6 @@ const AddPost = () => {
       .eq({ content, user_id: session.user.id });
   };
 
-=======
-   const handleDelete = async () => {
-     //post content to supabase
-     await supabase
-       .from("posts")
-       .delete()
-       .eq({ content, user_id: session.user.id });
-   };
-   
->>>>>>> f7af2e0331f2d2ff5e024012b98545c49886eaa6
   const handleContent = (e) => {
     setContent(e.target.value);
   };
