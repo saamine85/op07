@@ -15,6 +15,7 @@ function Avatar() {
       if (user) {
         const { data } = await supabase.from("profile").select("*").single();
         user.details = data;
+        setAvatarUrl(data.avatar_url);
       }
       console.log(`user`, user);
       setCurrentUser(user);
@@ -53,11 +54,30 @@ function Avatar() {
     console.log(`publicURL`, publicURL);
     await supabase
       .from("profile")
-      .update({ avatar_url: avatarKey })
-      // .update({ avatar_url: publicURL })
+      // .update({ avatar_url: avatarKey })
+      .update({ avatar_url: publicURL })
       .match({ id: currentUser.details.id });
   };
+  // const updateProfile = async (e) => {
+  //   try {
+  //     const user = supabase.auth.user();
+  //     const updates = {
+  //       id: user.id,
+  //       avatar_url: user.avatar_url,
+  //       updated_at: new Date(),
+  //     };
+  //     console.log(updates);
+  //     let { error } = await supabase.from("profile").upsert(updates, {
+  //       returning: "minimal", // Don't return the value after inserting
+  //     });
 
+  //     if (error) {
+  //       throw error;
+  //     }
+  //   } catch (error) {
+  //     alert(error.message);
+  //   }
+  // };
   return (
     <form onSubmit={handleUpload} className="formImage">
       <div className="avatar">
@@ -76,7 +96,7 @@ function Avatar() {
                 name="avatar"
                 disabled={loading}
                 style={{ display: "none" }}
-                onSubmit={handleUpload}
+                // onSubmit={handleUpload}
               />
             </label>
           </div>
@@ -86,6 +106,7 @@ function Avatar() {
         type="submit"
         className="uploadAvatar"
         value="telecharger avatar"
+        // onChange={updateProfile}
       />
     </form>
   );
