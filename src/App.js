@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // import "./login/Form.css";
 import "./index.css";
 
@@ -11,12 +11,13 @@ import Home from "./pages/Home";
 import Error from "./pages/Error";
 
 function App() {
+  const [user, setUser] = useState("amine");
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="posts" element={<Posts />} />
+        <Route path="profile" element={<Profile user={user} setUser={setUser} />} />
+        <Route path="posts" element={<Posts />} />
         <Route path="*" element={<Error />} />
 
         {/* for nested route */}

@@ -1,10 +1,14 @@
 import React from "react";
-import GetAvatar from "../Avatar/GetAvatar";
+// import GetAvatar from "../Avatar/GetAvatar";
 import Delete from "../delete/Delete";
 import { supabase } from "../../supabase";
 
+
 import "./Sidebar.css";
 import { useEffect, useState } from "react";
+// import AvatarUrl from "../Avatar/AvatarUrl";
+// import GetAvatar from "../Avatar/GetAvatar";
+import Avatar from "../Avatar/Avatar";
 const Sidebar = () => {
   const [session, setSession] = useState(null);
   const [profile, setProfile] = useState("");
@@ -21,7 +25,7 @@ const Sidebar = () => {
     if (session) {
       fetchProfile();
     }
-  });
+  },[session]);
 
   const fetchProfile = async () => {
     let { data: profile } = await supabase
@@ -29,7 +33,7 @@ const Sidebar = () => {
       .select("*")
       .eq("user_id", session.user.id)
       .single();
-    // console.log(profile);
+    console.log(profile);
     setProfile(profile);
   };
 
@@ -38,7 +42,7 @@ const Sidebar = () => {
     <div className="side-bar">
       {profile ? (
         <>
-          <GetAvatar />
+          <Avatar />
           <div className="info">
             <p>{profile.username}</p>
             <p> {profile.email}</p>
