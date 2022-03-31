@@ -5,102 +5,89 @@ import { supabase } from "../../supabase";
 import { MdOutlineAddAPhoto } from "react-icons/md";
 import "./avatar.css";
 
-function Avatar({ url, size, onUpload }) {
-  const [avatarUrl, setavatarUrl] = useState(null);
-  const [uploading, setUploading] = useState(false);
-
+function Avatar() {
+  const [loading, setLoading] = useState(false);
+  const [currentUser, setCurrentUser] = useState();
+  const [avatarPublicUrl, setAvatarUrl] = useState();
   useEffect(() => {
-    if (url) downloadImage(url);
-  }, [url]);
-
-  const downloadImage = async (path) => {
-    try {
-      const { data, error } = await supabase.storage
-        .from("avatars")
-        .download(path);
-      if (error) {
-        throw error;
+    const fetchUser = async () => {
+      const user = supabase.auth.user();
+      if (user) {
+        const { data } = await supabase.from("profile").select("*").single();
+        user.details = data;
       }
-      const url = URL.createObjectURL(data);
-      setavatarUrl(url);
-    } catch (error) {
-      console.log("Error downloading image: ", error.message);
-    }
-  };
+      console.log(`user`, user);
+      setCurrentUser(user);
+    };
+    fetchUser();
+  }, []);
 
-  const uploadAvatar = async (event) => {
-    try {
-      setUploading(true);
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   // const formData = new FormData(e.target);
+  //   await supabase
+  //     .from("profile")
+  //     // .update({ full_name: formData.get("fullName") })
+  //     .match({ id: currentUser.details.id });
+  // };
 
-      if (!event.target.files || event.target.files.length === 0) {
-        throw new Error("You must select an image to upload.");
-      }
-
-      const file = event.target.files[0];
-      const fileExt = file.name.split(".").pop();
-      const fileName = `${Math.random()}.${fileExt}`;
-      const filePath = `${fileName}`;
-
-      let { error: uploadError } = await supabase.storage
-        .from("avatars")
-        .upload(filePath, file);
-
-      if (uploadError) {
-        throw uploadError;
-      }
-
-      onUpload(filePath);
-      console.log(filePath);
-    
-    } catch (error) {
-      alert(error.message);
-    } finally {
-      setUploading(false);
-    }
+  const handleUpload = async (e) => {
+    e.preventDefault();
+    setLoading();
+    const formData = new FormData(e.target);
+    const avatarFile = formData.get("avatar");
+    const {
+      data: { Key: avatarKey },
+    } = await supabase.storage
+      .from("avatars")
+      .upload(`${currentUser.id}/${avatarFile.name}`, formData.get("avatar"), {
+        cacheControl: "3600",
+        //replace file
+        upsert: true,
+      });
+    console.log(avatarKey);
+    const { publicURL } = supabase.storage
+      .from("avatars")
+      .getPublicUrl(`${currentUser.id}/${avatarFile.name}`);
+    setAvatarUrl(publicURL);
+    console.log(`publicURL`, publicURL);
+    await supabase
+      .from("profile")
+      .update({ avatar_url: avatarKey })
+      // .update({ avatar_url: publicURL })
+      .match({ id: currentUser.details.id });
   };
 
   return (
-    <div className="imgProfile" style={{ width: size }} aria-live="polite">
-      <div className="addImage">
-        <img
-          src={avatarUrl ? avatarUrl : `avatars/${size}x${size}`}
-          alt={avatarUrl ? "Avatar" : ""}
-          style={{ height: "100%", width: "100%" }}
-        />
-      </div>
-      {uploading ? (
-        <span
-          style={{
-            position: "absolute",
-            display: "flex",
-            alignItems: "center",
-            height: "100%",
-            width: "100%",
-            borderRadius: "50%",
-            justifyContent: "center",
-            color: "#fff",
-          }}
-        >
-          Uploading...
-        </span>
-      ) : (
-        <>
-          <div className="addAvatar">
+    <form onSubmit={handleUpload} className="formImage">
+      <div className="avatar">
+        <div className="addavatar">
+          {avatarPublicUrl && <img src={avatarPublicUrl} alt="" />}
+        </div>
+        {loading ? (
+          "Loading"
+        ) : (
+          <div className="photoIcon">
             <label htmlFor="single" style={{ cursor: "pointer" }}>
               <MdOutlineAddAPhoto />
+              <input
+                type="file"
+                id="single"
+                name="avatar"
+                disabled={loading}
+                style={{ display: "none" }}
+                onSubmit={handleUpload}
+              />
             </label>
-            <input
-              type="file"
-              id="single"
-              accept="image/*"
-              style={{ display: "none" }}
-              onChange={uploadAvatar}
-              disabled={uploading}
-            />
           </div>
-        </>
-      )}
-    </div>
+        )}
+      </div>
+      <input
+        type="submit"
+        className="uploadAvatar"
+        value="telecharger avatar"
+      />
+    </form>
   );
 }
 export default Avatar;
