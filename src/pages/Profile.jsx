@@ -3,7 +3,10 @@ import { HeaderPages } from "../components/header/HeaderPages";
 import Sidebar from "../components/sidebare/Sidebar";
 import MainProfile from "../components/main/MainProfile";
 
-const Profile = ({ user, setUser }) => {
+const Profile = () => {
+// const Profile = ({ user, setUser }) => {
+
+
   return (
     <>
       <div className="fixed">
@@ -17,8 +20,8 @@ const Profile = ({ user, setUser }) => {
         <section className="mainProfile">
           <Sidebar />
           <MainProfile />
-          <button onClick={() => setUser("adrien")}>change user</button>
-          utilisateur:{user}
+          {/* <button onClick={() => setUser("adrien")} >change user</button>
+          utilisateur:{user} */}
         </section>
       </div>
 

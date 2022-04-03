@@ -19,37 +19,26 @@ function Avatar() {
       }
       console.log(`user`, user);
       setCurrentUser(user);
+      setLoading();
     };
     fetchUser();
   }, []);
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   // const formData = new FormData(e.target);
-  //   await supabase
-  //     .from("profile")
-  //     // .update({ full_name: formData.get("fullName") })
-  //     .match({ id: currentUser.details.id });
-  // };
-
-  const handleUpload = async (e) => {
+  const handleFile = async (e) => {
     e.preventDefault();
-    setLoading();
-    const formData = new FormData(e.target);
-    const avatarFile = formData.get("avatar");
-    const {
-      data: { Key: avatarKey },
-    } = await supabase.storage
+    // console.log(e.target.files[0]);
+    const myImage = e.target.files[0];
+    const { data } = await supabase.storage
       .from("avatars")
-      .upload(`${currentUser.id}/${avatarFile.name}`, formData.get("avatar"), {
+      .upload(`${currentUser.id}/${myImage.name}`, myImage, {
         cacheControl: "3600",
         //replace file
         upsert: true,
       });
-    console.log(avatarKey);
+    console.log(data);
     const { publicURL } = supabase.storage
       .from("avatars")
-      .getPublicUrl(`${currentUser.id}/${avatarFile.name}`);
+      .getPublicUrl(`${currentUser.id}/${myImage.name}`);
     setAvatarUrl(publicURL);
     console.log(`publicURL`, publicURL);
     await supabase
@@ -58,28 +47,9 @@ function Avatar() {
       .update({ avatar_url: publicURL })
       .match({ id: currentUser.details.id });
   };
-  // const updateProfile = async (e) => {
-  //   try {
-  //     const user = supabase.auth.user();
-  //     const updates = {
-  //       id: user.id,
-  //       avatar_url: user.avatar_url,
-  //       updated_at: new Date(),
-  //     };
-  //     console.log(updates);
-  //     let { error } = await supabase.from("profile").upsert(updates, {
-  //       returning: "minimal", // Don't return the value after inserting
-  //     });
 
-  //     if (error) {
-  //       throw error;
-  //     }
-  //   } catch (error) {
-  //     alert(error.message);
-  //   }
-  // };
   return (
-    <form onSubmit={handleUpload} className="formImage">
+    <div className="formImage">
       <div className="avatar">
         <div className="addavatar">
           {avatarPublicUrl && <img src={avatarPublicUrl} alt="" />}
@@ -96,19 +66,70 @@ function Avatar() {
                 name="avatar"
                 disabled={loading}
                 style={{ display: "none" }}
+                onChange={handleFile}
                 // onSubmit={handleUpload}
               />
             </label>
           </div>
         )}
       </div>
-      <input
-        type="submit"
-        className="uploadAvatar"
-        value="telecharger avatar"
-        // onChange={updateProfile}
-      />
-    </form>
+    </div>
   );
 }
 export default Avatar;
+
+// const handleSubmit = async (e) => {
+//   e.preventDefault();
+//   // const formData = new FormData(e.target);
+//   await supabase
+//     .from("profile")
+//     // .update({ full_name: formData.get("fullName") })
+//     .match({ id: currentUser.details.id });
+// };
+
+// const handleUpload = async (e) => {
+//   e.preventDefault();
+//   setLoading();
+//   const formData = new FormData(e.target);
+//   const avatarFile = formData.get("avatar");
+//   const {
+//     data: { Key: avatarKey },
+//   } = await supabase.storage
+//     .from("avatars")
+//     .upload(`${currentUser.id}/${avatarFile.name}`, formData.get("avatar"), {
+//       cacheControl: "3600",
+//       //replace file
+//       upsert: true,
+//     });
+//   console.log(avatarKey);
+//   const { publicURL } = supabase.storage
+//     .from("avatars")
+//     .getPublicUrl(`${currentUser.id}/${avatarFile.name}`);
+//   setAvatarUrl(publicURL);
+//   console.log(`publicURL`, publicURL);
+//   await supabase
+//     .from("profile")
+//     // .update({ avatar_url: avatarKey })
+//     .update({ avatar_url: publicURL })
+//     .match({ id: currentUser.details.id });
+// };
+// const updateProfile = async (e) => {
+//   try {
+//     const user = supabase.auth.user();
+//     const updates = {
+//       id: user.id,
+//       avatar_url: user.avatar_url,
+//       updated_at: new Date(),
+//     };
+//     console.log(updates);
+//     let { error } = await supabase.from("profile").upsert(updates, {
+//       returning: "minimal", // Don't return the value after inserting
+//     });
+
+//     if (error) {
+//       throw error;
+//     }
+//   } catch (error) {
+//     alert(error.message);
+//   }
+// };

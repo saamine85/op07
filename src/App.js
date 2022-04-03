@@ -11,12 +11,13 @@ import Home from "./pages/Home";
 import Error from "./pages/Error";
 
 function App() {
-  const [user, setUser] = useState("amine");
+  // const [user, setUser] = useState(""); //ceci a revoir pour eliminer lappel au serveur pour charger limage
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="profile" element={<Profile user={user} setUser={setUser} />} />
+        <Route path="profile" element={<Profile />} />
+        {/* <Route path="profile" element={<Profile user={user} setUser={setUser} />} /> */}
         <Route path="posts" element={<Posts />} />
         <Route path="*" element={<Error />} />
 

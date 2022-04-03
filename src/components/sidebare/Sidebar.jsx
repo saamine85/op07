@@ -3,7 +3,6 @@ import React from "react";
 import Delete from "../delete/Delete";
 import { supabase } from "../../supabase";
 
-
 import "./Sidebar.css";
 import { useEffect, useState } from "react";
 // import AvatarUrl from "../Avatar/AvatarUrl";
@@ -12,9 +11,9 @@ import Avatar from "../Avatar/Avatar";
 const Sidebar = () => {
   const [session, setSession] = useState(null);
   const [profile, setProfile] = useState("");
+  // const [avatarPublicUrl, setAvatarUrl] = useState();
 
   useEffect(() => {
-  
     setSession(supabase.auth.session());
     supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
@@ -25,7 +24,7 @@ const Sidebar = () => {
     if (session) {
       fetchProfile();
     }
-  },[session]);
+  }, [session]);
 
   const fetchProfile = async () => {
     let { data: profile } = await supabase
@@ -42,7 +41,10 @@ const Sidebar = () => {
     <div className="side-bar">
       {profile ? (
         <>
-          <Avatar />
+          <Avatar
+            // avatarPublicUrl={avatarPublicUrl}
+            // setAvatarUrl={setAvatarUrl}
+          />
           <div className="info">
             <p>{profile.username}</p>
             <p> {profile.email}</p>
